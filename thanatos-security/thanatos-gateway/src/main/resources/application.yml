@@ -1,0 +1,25 @@
+server:
+  port: 8091
+  servlet:
+    context-path: /api/gateway
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+    sentinel:
+      eager: true
+      transport:
+        port: 8719
+        dashboard: localhost:8858
+
+    gateway:
+      enabled: true
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true

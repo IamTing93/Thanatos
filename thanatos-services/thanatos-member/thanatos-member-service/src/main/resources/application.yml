@@ -1,0 +1,37 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /api/member
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/thanatos_data?characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: root
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+    sentinel:
+      eager: true
+      transport:
+        port: 8719
+        dashboard: localhost:8858
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+
+security:
+  oauth2:
+    client:
+      client-id: app-client
+      client-secret: client-secret-8888
+      user-authorization-uri: http://oauth2-service/oauth/authorize
+      access-token-uri: http://oauth2-service:10800/oauth/token
+    resource:
+      jwt:
+        key-uri: http://oauth2-service/oauth/token_key
+        key-value: sign-8888
